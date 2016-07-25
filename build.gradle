@@ -1,0 +1,49 @@
+apply plugin: 'gwt'
+apply plugin: 'war'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use 'jcenter' for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+buildscript {
+    repositories {
+        maven {
+            url 'http://dl.bintray.com/steffenschaefer/maven'
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.1'
+    }
+}
+
+group = 'com.github.gwtmaterialdesign'
+version = '1.2'
+
+description = "GWTP Starter"
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+gwt {
+    gwtVersion = "2.7.0"
+    modules "gwt.material.starter.GWTMaterialStarter"
+    minHeapSize = "512M";
+    maxHeapSize = "1024M";
+}
+
+repositories {
+        
+    maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'com.github.gwtmaterialdesign', name: 'gwt-material', version:'1.5.2'
+    compile group: 'com.github.gwtmaterialdesign', name: 'gwt-material-themes', version:'1.5.2'
+    compile group: 'com.github.gwtmaterialdesign', name: 'gwt-material-addins', version:'1.5.2'
+    providedCompile group: 'com.google.gwt', name: 'gwt-user', version:'2.7.0'
+    providedCompile group: 'com.gwtplatform', name: 'gwtp-mvp-client', version:'1.4'
+    providedCompile group: 'com.google.gwt.inject', name: 'gin', version:'2.1.2'
+}
