@@ -24,14 +24,18 @@ package gwt.material.starter.client.application;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
+import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
+import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import gwt.material.design.client.base.SearchObject;
 import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.events.SearchFinishEvent;
+import gwt.material.design.client.ui.MaterialContainer;
+import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialNavBar;
 import gwt.material.design.client.ui.MaterialSearch;
 import gwt.material.design.client.ui.MaterialToast;
@@ -40,7 +44,8 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ApplicationView extends ViewImpl implements ApplicationPresenter.MyView {
+public class ApplicationView extends ViewWithUiHandlers<ApplicationUiHandlers>
+        implements ApplicationPresenter.MyView {
 
     interface Binder extends UiBinder<Widget, ApplicationView> {
     }
@@ -50,6 +55,12 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
 
     @UiField
     MaterialSearch txtSearch;
+
+    @UiField
+    MaterialLink starterLink;
+
+    @UiField
+    MaterialContainer mainContainer;
 
     @Inject
     ApplicationView(
@@ -68,6 +79,7 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
                 MaterialToast.fireToast("You search : " + txtSearch.getSelectedObject().getKeyword());
             }
         });
+        bindSlot(ApplicationPresenter.SLOT_MAIN, mainContainer);
     }
 
     @UiHandler("btnSearch")
@@ -86,6 +98,11 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
         searches.add(new SearchObject(IconType.INFO, "Ball"));
         searches.add(new SearchObject(IconType.INFO, "Cat"));
         txtSearch.setListSearches(searches);
+    }
+
+    @UiHandler("starterLink")
+    void onStarterLinkClick(ClickEvent e) {
+        getUiHandlers().navigateToHome();
     }
 
 }

@@ -70,7 +70,7 @@
                     <m:MaterialLabel text="GWT Material" textColor="white"/>
                     <m:MaterialLink text="gwt-material@gmail.com" activates="dropProfile" iconType="ARROW_DROP_DOWN" iconPosition="RIGHT" textColor="white"/>
                 </ma:sideprofile.MaterialSideProfile>
-                <m:MaterialLink text="Starter" textColor="blue" iconType="WHATSHOT"/>
+                <m:MaterialLink ui:field="starterLink" text="Home" textColor="blue" iconType="WHATSHOT"/>
                 <m:MaterialLink text="Apps" textColor="blue" iconType="VIEW_MODULE"/>
                 <m:MaterialLink text="Notifications" textColor="blue" iconType="NOTIFICATIONS" separator="true"/>
                 <m:MaterialLink text="Navigation" textColor="blue" iconType="NAVIGATION"/>
@@ -84,7 +84,7 @@
             </m:MaterialDropDown>
         </header>
 
-        <m:MaterialContainer fontSize="0.8em">
+        <m:MaterialContainer fontSize="0.8em" ui:field="mainContainer">
             <m:MaterialLabel text="Today" textColor="grey" addStyleNames="{style.label}"/>
             <!-- Collapsible -->
             <m:MaterialCollapsible type="POPOUT" grid="s12 m6 l8">
