@@ -1,4 +1,4 @@
-package gwt.material.starter.client.place;
+package gwt.material.starter.client.application;
 
 /*
  * #%L
@@ -20,7 +20,14 @@ package gwt.material.starter.client.place;
  * #L%
  */
 
+import com.google.gwt.user.client.Window;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-public class NameTokens {
-    public static final String HOME = "hello-world";
+/**
+ *
+ * @author akay
+ */
+public interface ApplicationUiHandlers extends UiHandlers {
+
+    void navigateToHome();
 }
